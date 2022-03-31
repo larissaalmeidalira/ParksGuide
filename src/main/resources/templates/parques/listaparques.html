@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Tipos de Parques</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+</head>
+<body>
+
+	<header th:replace="fragments/padrao :: cabecalho"></header>
+	
+	 <nav>
+    <div class="nav-wrapper" style="background-color: black;">
+    
+      <form action="/buscarParque">
+        <div class="input-field">
+          <input id="search" type="search" required name="valorBuscado">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        <select class="browser-default" name="select" style="">
+		    <option>Choose your option</option>
+		    <option th:value="nome" >Nome</option>
+		    <option th:value="palavraChave">Palavra-Chave</option>
+		    <option th:value="descricao">Descrição</option>
+		  </select>
+      </form>
+	</div> 
+  </nav>
+  
+  <div style="margin-left:150px; margin-right: 150px; margin-top: 100px;">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Palavra-Chave</th>
+				<th>Descrição</th>
+				<th>Alterar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="parque:${parques}">
+				<td th:text="${parque.id}"></td>
+				<td th:text="${parque.nome}"></td>
+				<td th:text="${parque.palavraChave}"></td>
+				<td th:text="${parque.descricao}"></td>
+				<td><a th:href="@{/alterarParque(id=${parque.id})}">Alterar</a></td>
+				<td><a th:href="@{/excluirParque(id=${parque.id})}">Excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
+	  
+ 
+</body>
+</html>

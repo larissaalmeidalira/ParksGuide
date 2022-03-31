@@ -1,0 +1,45 @@
+.sucesso{
+	background-color: #9AEBA3;
+	padding:1.3em;
+	width: 500px;
+	border-radius: 10px;
+	text-align: center;
+	color: white;
+}
+
+.erro{
+
+	background-color: #ff6666;
+	padding:1.3em;
+	width: 500px;
+	border-radius: 10px;
+	text-align: center;
+	color: white;	
+}
+
+fieldset {
+	width: 40%;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.input-field .prefix ~ input, .input-field .prefix ~ textarea,
+ .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label,
+  .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content{
+	width: calc(100% - -4.9rem) !important;
+}
+
+.btn, .btn-large, .btn-small {
+    text-decoration: none;
+    color: #fff;
+    background-color: black !important;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    border-radius: 10px !important;
+}
+
+
+
