@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Lista de Parques</title>
+
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+	<header th:replace="fragments/padrao :: cabecalho"></header>
+
+	 <nav>
+    <div class="nav-wrapper" style="background-color: black;">
+    
+      <form action="/buscarParque">
+        <div class="input-field">
+          <input id="search" type="search" required name="valor">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+	</div> 
+  </nav>
+  
+  <div style="margin-left:50px; margin-right: 50px; margin-top: 50px;">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Ingresso</th>
+				<th>Brinquedos</th>
+				<th>Espaço Infantil</th>
+				<th>Praça de Alimentação</th>
+				<th>Site</th>
+				<th>Redes Sociais</th>
+				<th>Telefone</th>
+				<th>Endereço</th>
+				<th>Nº</th>
+				<th>Bairro</th>
+				<th>Cidade</th>
+				<th>Estado</th>
+				<th>Fotos</th>
+				<th>Alterar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p:${parque}">
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.nome}"></td>
+				<td th:text="${p.descricao}"></td>
+				<td th:text="${p.ingresso}"></td>
+				<td th:text="${p.brinquedos}"></td>
+				<td th:text="${p.espacoInfantil}"></td>
+				<td th:text="${p.pracaAlimentacao}"></td>
+				<td th:text="${p.site}"></td>
+				<td th:text="${p.redesSociais}"></td>
+				<td th:text="${p.telefone}"></td>
+				<td th:text="${p.rua}"></td>
+				<td th:text="${p.numero}"></td>
+				<td th:text="${p.bairro}"></td>
+				<td th:text="${p.cidade}"></td>
+				<td th:text="${p.estado}"></td>
+				<td></td>
+				<td><a th:href="@{/alterarParque(id=${p.id})}">Alterar</a></td>
+				<td><a th:href="@{/excluirParque(id=${p.id})}">Excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
+	
+</body>
+</html>

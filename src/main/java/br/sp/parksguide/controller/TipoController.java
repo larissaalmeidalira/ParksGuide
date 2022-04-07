@@ -3,7 +3,7 @@ package br.sp.parksguide.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,10 +11,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 
 
@@ -33,24 +33,13 @@ public class TipoController {
 	}
 	
 	@RequestMapping("salvarTipos")
-	public String salvarTipos(@Valid TipoParques parques, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) {
-			attr.addFlashAttribute("mensagemErro", "Verifique os campos!");
-			return "redirect:TipoParques";
-		}
-		try {
-			tipoRepository.save(parques);
-		
-			attr.addFlashAttribute("mensagemSucesso", "Tipo de parques cadastrado com sucesso! ID - "+parques.getId() );
-			return "redirect:administrador";
-		} catch (Exception e) {
-			attr.addFlashAttribute("mensagemErro", "Houve um erro ao cadastrar o tipo do parque: "+e.getMessage());
-		}
-		
+	public String salvarTipos(TipoParques parques) {
+		tipoRepository.save(parques);
+					
 		return "redirect:TipoParques";
 	}
 	
-	@RequestMapping("listarParques/{page}")
+	@RequestMapping("listarTipoParques/{page}")
 	public String listaAdm(Model model, @PathVariable("page") int page) {
 		
 		PageRequest pageable = PageRequest.of(page-1, 10, Sort.by(Sort.Direction.ASC, "nome"));
@@ -70,21 +59,22 @@ public class TipoController {
 		return "parques/listaparques";
 	}
 	
-	@RequestMapping("alterarParque")
+	@RequestMapping("alterarTipoParque")
 	public String alterar(Model model, Long id) {
 		TipoParques p = tipoRepository.findById(id).get();
 		model.addAttribute("parque", p);
 		return "forward:TipoParques";
 	}
 	
-	@RequestMapping("excluirParque")
+	@RequestMapping("excluirTipoParque")
 	public String excluir(Long id) {
 		tipoRepository.deleteById(id);
-		return "redirect:listarParques/1";
+		return "redirect:listarTipoParques/1";
 	}
 	
-	@RequestMapping("buscarParque")
+	@RequestMapping("/buscarTipoParque")
 	public String buscar(String select, String valorBuscado, Model model) {
+		
 		if(select.equals("palavraChave")) {
 			model.addAttribute("parques", tipoRepository.procurarPalavraChave(valorBuscado));
 			return "parques/listaparques";

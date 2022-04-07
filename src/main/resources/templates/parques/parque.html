@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Parque</title>
+	<link href="styleParque.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+           
+</head>
+<body>
+
+	<header th:replace="fragments/padrao :: cabecalho"></header>
+
+	<fieldset>
+ 
+ 		 <legend><h4>Cadastro de Parques</h4></legend>
+		  
+			<div class="row">
+		    <form class="col s12" action="salvarParque" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+		    	
+		      <div class="row">
+		        <div class="input-field col s6">
+		         	 <input id="nome" type="text" class="validate" name="nome" style="margin-bottom: 0px;">
+		         	 <label for="nome">Nome</label>
+		        </div>
+		        
+		        <select class="browser-default" name="tipo">
+				    <option th:each="t: ${tipos}" th:value="${t.id}" th:text="${t.nome}"></option> 
+		  		</select>
+		      </div>
+		   
+		       
+		      <div class="row">
+		        <div class="input-field col s11">
+			        <input id="descricao" type="text" class="validate" name="descricao">
+			        <label for="descricao">Descrição</label>
+		        </div>
+		      </div>
+		      
+		      
+		       <div class="row">
+		        <div class="input-field col s3">
+			        <input placeholder="Número de Brinquedos" id="briquedos" type="text" class="validate" name="brinquedos">
+			        <label for="brinquedos">Brinquedos</label>
+		        </div>
+		        
+		        <div class="input-field col s3">
+			        <input placeholder="R$" id="ingresso" type="text" class="validate" name="ingresso">
+			        <label for="ingresso">Ingresso</label>
+		        </div>
+				
+		      </div>
+		      
+		 		<p>
+			      <label style="margin-right: 50px;">
+			        <input type="checkbox" name="espacoInfantil"/>
+			        <span>Espaço Infantil</span>
+			      </label>
+			      
+			       <label>
+			        <input type="checkbox" name="pracaAlimentacao"/>
+			        <span>Praça de Alimentção</span>
+			      </label>
+			    </p>
+		      
+		       <div class="row">
+		        <div class="input-field col s11">
+			        <input id="site" type="text" class="validate" name="site">
+			        <label for="site">Site</label>
+		        </div>
+		      </div>
+		      
+		       <div class="row">
+		        <div class="input-field col s7">
+			        <input id="redesSociais" type="text" class="validate" name="redesSociais">
+			        <label for="redesSociais">Redes Sociais</label>
+		        </div>
+		        
+		        <div class="input-field col s4">
+			        <input id="telefone" type="text" class="validate" name="telefone">
+			        <label for="telefone">Telefone</label>
+		        </div>
+		      </div>
+		      
+		       
+		      
+		       <div class="row">
+		        <div class="input-field col s11">
+		        	<input type="text" class="validate" name="fotos"  disabled>
+		        	
+			        <input id="fileFotos" type="file" class="file" name="fileFotos" multiple="multiple" accept="image/*">
+			        <label for="fileFotos">Fotos</label>
+		        </div>
+		      </div>
+		      
+		      
+		      <fieldset class="fieldset2">
+		      	
+		      	<legend><h5>Localização</h5></legend>
+		      
+			      <div class="row">
+			        <div class="input-field col s4">
+			        	<input id="cep" type="text" class="validate" name="cep">
+				        <label for="cep">CEP</label>
+			        </div>
+			      </div>
+			      
+			       <div class="row">
+		        	 <div class="input-field col s5">
+         				 <input placeholder=" " id="rua" type="text" class="validate" name="rua" readonly>
+         				 <label for="rua">Endereço</label>
+        			</div>
+        			
+		        	  <div class="input-field col s1">
+         				 <input placeholder=" " id="numero" type="text" class="validate" name="numero">
+         				 <label for="numero">Nº</label>
+        			  </div>
+        			  
+		        	 <div class="input-field col s5">
+		         		<input placeholder=" " id="bairro" type="text" class="validate" name="bairro" readonly>
+		         		<label for="bairro">Bairro</label>
+        			</div>
+		     	 </div>
+		     	 
+		     	 <div class="row">
+		        	 <div class="input-field col s5">
+         				 <input placeholder=" "  id="cidade" type="text" class="validate" name="cidade" readonly>
+         				 <label for="cidade">Cidade</label>
+        			</div>
+        			
+        			
+		        	 <div class="input-field col s1">
+         				 <input placeholder=" "  id="estado" type="text" class="validate" name="estado" readonly>
+         				 <label for="estado">Estado</label>
+        			</div>  
+		     	 </div>
+		     	    
+		      </fieldset>
+		      
+		     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+		    	<i class="material-icons right">send</i>
+		 	 </button>
+		 	 
+		    </form>
+		    
+		  </div>
+		  
+		  <div th:replace="fragments/mensagens"></div>
+		  
+   </fieldset>
+	
+	<script src="/cepJS.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "parksguide-a70d9",
+  "private_key_id": "873abcaaba98cb95fb09d902e2576966e6a15663",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7gWFTLQpgZBHC\nc1W7azDDcDULWjCBtMHIabWZjPodEzG2y/fNFTtpi4a1AGq1tEnSo+ZZ+vTPCWfj\nnNIdXD0syORlFAFv+X3r1/rvCqj+vysGM82c9ELgJP1fsxyLMFYrYqrF8fhX+F+i\nQb2pabYyr+Webvnvz2HoaMl+FOf3fPBk/uEd0bpFi6u1xjnU3cqOXKA3dUiwocNZ\nbrBqVXQyMFqV3dU6Hqr1IXGokaHC8x2HYT56tds75xl65kKcepKj/Rr9vktJLZeD\nvcYffnTlulh1q8EO3h4Kita+hUtyEhS/w/5YWmhlgwpiATB3MzKIn0l+qfCYpwQs\njkciIRJlAgMBAAECggEAHmSfYPsZBnzSACHv0JxUYCmM/5UT7cJd8t1nqUcXt6TH\n1yiCt0Rsx/Ps1uQFaAScPr+AdC9ghTqyE0v1Jvsvk1XQ561xejQHvDXbH+orcHeO\nQsgc2Qci2/BC/cMrqkggf5HTupg5OBEzdzqOwqo29Upbvu2gJ8YGycRKfNxoqU3Y\np4tY7CKkQWlD0tfCxJEHklFMKQM/OpwbpK/sq7dnSqHBAdIot5/KnqvcMZ24vm86\ne8DBtiMvis58yCiF+xsKwSh17u4g/lvg0yDyAMXIi63tnJrSk8QnXHmhgubDQXrt\n3scqtG0/tWVSCKQ/eJtZUqe17W0KhhkikZ3f7+87lQKBgQD2kwM+04An+IIi9o8D\nPhQtKjrY6vvAHB8tXNYKl1Wjp6zYiFQttxGg6Qdak1mHkukvwTAWoDHQkPNqLZK4\nAG4XJvmto4YYTzF3qgFZVvz+TRcpBzy/tblSxLXmi1U4bNrUyVGFBfeT49G+DgnI\nuBcHhrjNeCc5uX6yG/RxB2uhIwKBgQDCrFETly4EPPNuF1q+eTME3MXg+vzE2rOM\nWihdDhAzle90YAX9jKFDocRf35oH0hpXiysrA1dlA4mvSVe7M45zJTeAjLRnyfvC\nLcw01Twl2sbeTW6dhHSbD3D6NlBjBaUnxlI+DIZx1Mi2Mb1TJUrry+slRFk3uU6G\nY5YD8c8q1wKBgQCxaSGiqKbDG6j24xQPLzFxNbtVq+0rUpCUIQHYaP6zW8efnKeE\npP3IGyKxZue6BlhFhejFvslY2ZJqSRQR1C1h9ycaalfnUcOz59xEnbQ2fN03Jf/t\nqCEJjoOat5G/oYLqK1e+MIbsH7Uf3BXqF5pqTeLV46fFftPL7xU35jDopQKBgEfS\ncVsr9KNFpX4hia4qYwNRPIRDtUwfcAzBGpEyZhHSKHUkFDG2V6zvGtdQVLC7+FIC\nG1wUMIMpKfwMsBx16gFbYr2/q7N7FrJOWT/IyBcjPym3Ia9lteubZ9A4h7Hw3Dzv\nc1pHHrcSjTaC5VmusZSLOGcYb14atPjp9uffp9IjAoGAN9KLd1YjDW6K335FmRtn\n4VWHRqyTeRfEqkqGgq0e6WEaCtmFTWrM3wLG+WNRp1xGxp47/slSHeCHfo1dETSV\nPOCa4cZlawcTJ1tjAHaysbzW/jeuLXmpBGXDRL+YXaN6/SWor42lH4ZmxTuTLI9n\n5J4r8645QRoW+O3fmcBWzW8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ch7h8@parksguide-a70d9.iam.gserviceaccount.com",
+  "client_id": "114292140737872023467",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ch7h8%40parksguide-a70d9.iam.gserviceaccount.com"
+}
