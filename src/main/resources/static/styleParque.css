@@ -1,3 +1,23 @@
+.sucesso{
+	background-color: #9AEBA3;
+	padding:1.3em;
+	width: 500px;
+	border-radius: 10px;
+	text-align: center;
+	color: white;
+}
+
+.erro{
+
+	background-color: #ff6666;
+	padding:1.3em;
+	width: 500px;
+	border-radius: 10px;
+	text-align: center;
+	color: white;	
+}
+
+
 fieldset {
 	width: 50%;
 	margin: auto;
@@ -58,3 +78,9 @@ input[type=text]:not(.browser-default):focus:not([readonly]){
     -webkit-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
 }
+
+label {
+	color: #9e9e9e !important;
+}
+
+

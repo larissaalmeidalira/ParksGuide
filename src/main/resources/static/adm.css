@@ -41,5 +41,27 @@ fieldset {
     border-radius: 10px !important;
 }
 
+.input-field .prefix.active{
+	color: black !important;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]){
+	border-bottom: 1px solid #9e9e9e !important;
+	box-shadow: 0 1px 0 0 #9e9e9e !important;
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly]){
+	border-bottom: 1px solid #9e9e9e !important;
+	box-shadow: 0 1px 0 0 #9e9e9e !important;
+}
+
+input[type=password]:not(.browser-default):focus:not([readonly]){
+	border-bottom: 1px solid #9e9e9e !important;
+	box-shadow: 0 1px 0 0 #9e9e9e !important;
+}
+
+label {
+	color: #9e9e9e !important;
+}
 
 

@@ -12,16 +12,20 @@
 	      <a href="#" class="brand-logo">Logo</a>
 	      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	      	<li><a th:href="@{/login}"><b>Administrador</b></a></li>
 	        <li><a href="#"><b>Home</b></a></li>
 	        <li><a href="#"><b>Clientes</b></a></li>
 	      </ul>
 	    </div>
 	    <div class="nav-content">
-	      <ul class="tabs tabs-transparent">
-	       	<li class="tab"><a class="active" th:href="@{/administrador}">Cadastro</a></li>
-	        <li class="tab"><a class="active" th:href="@{/listarAdm/1}">Administradores Cadastrados</a></li>
-	        <li class="tab"><a class="active" th:href="@{/TipoParques}">Cadastro de Parques</a></li>
-	        <li class="tab"><a class="active" th:href="@{/listarParques/1}">Parques Cadastrados</a></li>
+	      <ul class="tabs tabs-transparent" th:if="${session.usuarioLogado != null}">
+	      	  <li class="tab"><a class="active" th:href="@{/logout}"><i class="material-icons prefix" style=" font-size: 28px !important; line-height: 48px !important;">first_page</i></a></li>
+		      <li class="tab"><a class="active" th:href="@{/administrador}">Cadastro</a></li>
+		      <li class="tab"><a class="active" th:href="@{/listarAdm/1}">Administradores Cadastrados</a></li>
+		      <li class="tab"><a class="active" th:href="@{/cadastroParque}">Cadastro de Parques</a></li>
+		      <li class="tab"><a class="active" th:href="@{/listarParques/1}">Parques Cadastrados</a></li>
+		      <li class="tab"><a class="active" th:href="@{/TipoParques}">Cadastro de Tipos</a></li>
+		      <li class="tab"><a class="active" th:href="@{/listarTipoParques/1}">Tipos Cadastrados</a></li>
 	      </ul>
 	    </div>
 	  </nav>

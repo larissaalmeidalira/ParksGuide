@@ -20,22 +20,22 @@
 		  
 			<div class="row">
 		    <form class="col s12" action="salvarParque" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-		    	
+		    	 <input type="hidden" th:value="${parques?.id}" name="id">
 		      <div class="row">
 		        <div class="input-field col s6">
-		         	 <input id="nome" type="text" class="validate" name="nome" style="margin-bottom: 0px;">
+		         	 <input id="nome" type="text" class="validate" name="nome" th:value="${parques?.nome}" style="margin-bottom: 0px;">
 		         	 <label for="nome">Nome</label>
 		        </div>
 		        
 		        <select class="browser-default" name="tipo">
-				    <option th:each="t: ${tipos}" th:value="${t.id}" th:text="${t.nome}"></option> 
+				    <option th:each="t: ${tipos}" th:value="${t.id}" th:text="${t.nome}" th:selected="${t.id == parques?.tipo?.id}"></option> 
 		  		</select>
 		      </div>
 		   
 		       
 		      <div class="row">
 		        <div class="input-field col s11">
-			        <input id="descricao" type="text" class="validate" name="descricao">
+			        <input id="descricao" type="text" class="validate" name="descricao" th:value="${parques?.descricao}">
 			        <label for="descricao">Descrição</label>
 		        </div>
 		      </div>
@@ -43,12 +43,12 @@
 		      
 		       <div class="row">
 		        <div class="input-field col s3">
-			        <input placeholder="Número de Brinquedos" id="briquedos" type="text" class="validate" name="brinquedos">
+			        <input placeholder="Número de Brinquedos" id="briquedos" type="text" class="validate" name="brinquedos" th:value="${parques?.brinquedos}">
 			        <label for="brinquedos">Brinquedos</label>
 		        </div>
 		        
 		        <div class="input-field col s3">
-			        <input placeholder="R$" id="ingresso" type="text" class="validate" name="ingresso">
+			        <input placeholder="R$" id="ingresso" type="text" class="validate" name="ingresso" th:value="${parques?.ingresso}">
 			        <label for="ingresso">Ingresso</label>
 		        </div>
 				
@@ -56,31 +56,31 @@
 		      
 		 		<p>
 			      <label style="margin-right: 50px;">
-			        <input type="checkbox" name="espacoInfantil"/>
+			        <input type="checkbox" name="espacoInfantil" th:checked="${parques?.espacoInfantil}"/>
 			        <span>Espaço Infantil</span>
 			      </label>
 			      
 			       <label>
-			        <input type="checkbox" name="pracaAlimentacao"/>
+			        <input type="checkbox" name="pracaAlimentacao" th:checked="${parques?.pracaAlimentacao}"/>
 			        <span>Praça de Alimentção</span>
 			      </label>
 			    </p>
 		      
 		       <div class="row">
 		        <div class="input-field col s11">
-			        <input id="site" type="text" class="validate" name="site">
+			        <input id="site" type="text" class="validate" name="site" th:value="${parques?.site}">
 			        <label for="site">Site</label>
 		        </div>
 		      </div>
 		      
 		       <div class="row">
 		        <div class="input-field col s7">
-			        <input id="redesSociais" type="text" class="validate" name="redesSociais">
+			        <input id="redesSociais" type="text" class="validate" name="redesSociais" th:value="${parques?.redesSociais}">
 			        <label for="redesSociais">Redes Sociais</label>
 		        </div>
 		        
 		        <div class="input-field col s4">
-			        <input id="telefone" type="text" class="validate" name="telefone">
+			        <input id="telefone" type="text" class="validate" name="telefone" th:value="${parques?.telefone}">
 			        <label for="telefone">Telefone</label>
 		        </div>
 		      </div>
@@ -89,11 +89,26 @@
 		      
 		       <div class="row">
 		        <div class="input-field col s11">
-		        	<input type="text" class="validate" name="fotos"  disabled>
+		        	 <input type="hidden" th:value="${parques?.fotos}" name="fotos">
 		        	
 			        <input id="fileFotos" type="file" class="file" name="fileFotos" multiple="multiple" accept="image/*">
-			        <label for="fileFotos">Fotos</label>
+			       
 		        </div>
+		      </div>
+		      
+		    
+		    
+		      <div th:if="${parques?.fotos?.length > 0}">
+		      		<h6>Fotos Cadastradas</h6>
+		      		<div class="fotos">
+		      			<ul>
+		      				<li th:each="fotos, i : ${parques?.verFotos()}">		      				
+		      					<a th:href="${fotos}" target="_blank"><img th:src="${fotos}" height="50px"></a>
+		      					<a th:href="@{/excluirFoto(id=${parques.id}, numFoto = ${i.index})}">=</a>
+		      				</li>
+		      			</ul>
+		      		</div>
+		      
 		      </div>
 		      
 		      
@@ -103,37 +118,37 @@
 		      
 			      <div class="row">
 			        <div class="input-field col s4">
-			        	<input id="cep" type="text" class="validate" name="cep">
+			        	<input id="cep" type="text" class="validate" name="cep" th:value="${parques?.cep}">
 				        <label for="cep">CEP</label>
 			        </div>
 			      </div>
 			      
 			       <div class="row">
 		        	 <div class="input-field col s5">
-         				 <input placeholder=" " id="rua" type="text" class="validate" name="rua" readonly>
+         				 <input placeholder=" " id="rua" type="text" class="validate" name="rua" th:value="${parques?.rua}" readonly>
          				 <label for="rua">Endereço</label>
         			</div>
         			
 		        	  <div class="input-field col s1">
-         				 <input placeholder=" " id="numero" type="text" class="validate" name="numero">
+         				 <input placeholder=" " id="numero" type="text" class="validate" name="numero" th:value="${parques?.numero}">
          				 <label for="numero">Nº</label>
         			  </div>
         			  
 		        	 <div class="input-field col s5">
-		         		<input placeholder=" " id="bairro" type="text" class="validate" name="bairro" readonly>
+		         		<input placeholder=" " id="bairro" type="text" class="validate" name="bairro" th:value="${parques?.bairro}" readonly>
 		         		<label for="bairro">Bairro</label>
         			</div>
 		     	 </div>
 		     	 
 		     	 <div class="row">
 		        	 <div class="input-field col s5">
-         				 <input placeholder=" "  id="cidade" type="text" class="validate" name="cidade" readonly>
+         				 <input placeholder=" "  id="cidade" type="text" class="validate" name="cidade" th:value="${parques?.cidade}" readonly>
          				 <label for="cidade">Cidade</label>
         			</div>
         			
         			
 		        	 <div class="input-field col s1">
-         				 <input placeholder=" "  id="estado" type="text" class="validate" name="estado" readonly>
+         				 <input placeholder=" "  id="estado" type="text" class="validate" name="estado" th:value="${parques?.estado}" readonly>
          				 <label for="estado">Estado</label>
         			</div>  
 		     	 </div>
@@ -147,8 +162,6 @@
 		    </form>
 		    
 		  </div>
-		  
-		  <div th:replace="fragments/mensagens"></div>
 		  
    </fieldset>
 	

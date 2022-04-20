@@ -25,12 +25,13 @@
 	</div> 
   </nav>
   
-  <div style="margin-left:50px; margin-right: 50px; margin-top: 50px;">
+  <div style="margin:50px;">
 	<table>
 		<thead>
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
+				<th>Tipo</th>
 				<th>Descrição</th>
 				<th>Ingresso</th>
 				<th>Brinquedos</th>
@@ -53,6 +54,7 @@
 			<tr th:each="p:${parque}">
 				<td th:text="${p.id}"></td>
 				<td th:text="${p.nome}"></td>
+				<td th:text="${p.tipo.nome}"></td>
 				<td th:text="${p.descricao}"></td>
 				<td th:text="${p.ingresso}"></td>
 				<td th:text="${p.brinquedos}"></td>
@@ -66,7 +68,7 @@
 				<td th:text="${p.bairro}"></td>
 				<td th:text="${p.cidade}"></td>
 				<td th:text="${p.estado}"></td>
-				<td></td>
+				<td th:text="${p.verFotos}"></td>
 				<td><a th:href="@{/alterarParque(id=${p.id})}">Alterar</a></td>
 				<td><a th:href="@{/excluirParque(id=${p.id})}">Excluir</a></td>
 			</tr>

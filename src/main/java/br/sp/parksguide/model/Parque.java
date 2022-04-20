@@ -36,4 +36,8 @@ public class Parque {
 	private boolean espacoInfantil;
 	private boolean pracaAlimentacao;
 	
+	public String[] verFotos() {
+		return this.fotos.split(";");
+	}
+	
 }

@@ -4,6 +4,7 @@ package br.sp.parksguide.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.sp.parksguide.annotation.Publico;
 import br.sp.parksguide.model.Administrador;
 import br.sp.parksguide.repository.AdminRepository;
 import br.sp.parksguide.util.HashUtil;
@@ -28,6 +30,7 @@ public class AdmController {
 	@Autowired
 	private AdminRepository repository;
 	
+	@Publico
 	@RequestMapping("administrador")
 	public String formAdm() {
 		return "adm/formadm";
@@ -95,6 +98,36 @@ public class AdmController {
 		
 		
 		return "adm/listaadm";
+	}
+	
+	@Publico
+	@RequestMapping("login")
+	public String loing() {
+		return "adm/login";
+	}
+	
+	@Publico
+	@RequestMapping("loginAdm")
+	public String loginAdm(Administrador admLogin, RedirectAttributes attr, HttpSession session) {
+		// BUSCAR O ADMINISTRADOR NO BANCO DE DADOS ATRAVÉS DO E-MAIL E SENHA
+		Administrador admin = repository.findByEmailAndSenha(admLogin.getEmail(), admLogin.getSenha());
+		// VERIFICA SE EXISTE O ADMIN
+		if(admin == null) {
+			// AVISA AO USUÁRIO
+			attr.addFlashAttribute("mensagemErro", "Login e/ou senha inválido");
+			return "redirect:login";
+		}else {
+			// SE NÃO FOR NULO, SALVA NA SESSÃO E ACESSA O SISTEMA
+			session.setAttribute("usuarioLogado", admin);
+			return "redirect:listarParques/1";
+		}
+		
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:login";
 	}
 	
 	@RequestMapping("alterarAdm")
