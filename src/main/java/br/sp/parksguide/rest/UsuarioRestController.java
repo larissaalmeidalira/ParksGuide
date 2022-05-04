@@ -1,6 +1,9 @@
 package br.sp.parksguide.rest;
 
 import java.net.URI;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -17,15 +20,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+
 import br.sp.parksguide.annotation.Privado;
 import br.sp.parksguide.annotation.Publico;
 import br.sp.parksguide.model.Erro;
+import br.sp.parksguide.model.TokenJWT;
 import br.sp.parksguide.model.Usuario;
 import br.sp.parksguide.repository.UsuarioRepository;
 
 @RequestMapping("/api/usuario")
 @RestController
 public class UsuarioRestController {
+	
+	public static final String EMISSOR = "Senai";
+	public static final String SECRET = "Park@Guide";
+	
 	@Autowired
 	private UsuarioRepository repository;
 	
@@ -89,4 +100,30 @@ public class UsuarioRestController {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@Publico
+	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<TokenJWT> logar(@RequestBody Usuario usuario){
+		usuario = repository.findByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
+		
+		if (usuario != null) {
+			// VALORES ADICIONAIS PARA O TOKEN
+			Map<String, Object> payload = new HashMap<String, Object>();
+			payload.put("id_usuario", usuario.getIdUsuario());
+			payload.put("nome_usuario", usuario.getNome());
+			//DEFINIR A DATA DE EXPIRAÇÃO
+			Calendar expiracao = Calendar.getInstance();
+			expiracao.add(Calendar.HOUR, 1);
+			// ALGORITMO PARA ASSINAR O TOKEN
+			Algorithm algoritmo = Algorithm.HMAC256(SECRET);
+			// GERAR TOKEN
+			TokenJWT tokenJwt = new TokenJWT();
+			tokenJwt.setToken(JWT.create().withPayload(payload).withIssuer(EMISSOR).withExpiresAt(expiracao.getTime()).sign(algoritmo));
+			
+			return ResponseEntity.ok(tokenJwt);
+		}else {
+			return new ResponseEntity<TokenJWT>(HttpStatus.UNAUTHORIZED);
+		}
+		
+	}
+
 }
